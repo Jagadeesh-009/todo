@@ -1,23 +1,61 @@
-/* Write your CSS here */
-.SimpleTodos-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  width: 100%;
+.simple-todos-container {
   background-color: #ffc2a0;
+  padding: 20px;
+  text-align: center;
 }
-.SimpleTodos-container-two {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: aliceblue;
-  padding: 60px;
-  border-radius: 20px;
+
+.todo-input-container {
+  margin-bottom: 20px;
 }
-ul {
+
+.todos-list {
   list-style-type: none;
+  padding: 0;
 }
-.SimpleTodos-heading {
-  color: #ff8542;
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 10px 30px;
+  width: 600px;
+  margin: 5px;
+  border-radius: 40px;
+}
+
+.btn {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: none;
+  background-color: #ff7043;
+  color: white;
+  border-radius: 3px;
+  margin-left: 5px;
+}
+
+.btn.edit-btn {
+  border: 2px solid salmon;
+  background-color: transparent;
+  color: black;
+  border-radius: 20px;
+  padding: 5px 20px;
+}
+
+.btn.delete-btn {
+  border: 2px solid salmon;
+  background-color: transparent;
+  color: black;
+  border-radius: 20px;
+  padding: 5px 20px;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+}
+input {
+  background-color: transparent;
+  height: 30px;
+  width: 250px;
+  border-radius: 30px;
+  padding: 10px;
 }

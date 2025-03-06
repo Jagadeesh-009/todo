@@ -1,20 +1,68 @@
-// Write your code here
+import {Component} from 'react'
 import './index.css'
 
-const TodoItem = props => {
-  const {initialTodosListIs, deleteTodoItems} = props
-  const {title, id} = initialTodosListIs
-  const onDelete = () => {
-    deleteTodoItems(id)
+class TodoItem extends Component {
+  constructor(props) {
+    super(props)
+    const {todoDetails} = props
+    this.state = {
+      isEditing: false,
+      editedTitle: todoDetails.title,
+    }
   }
-  return (
-    <li className="TodoItem-container">
-      <p className="TodoItem-para">{title}</p>
-      <button type="button" className="btn" onClick={onDelete}>
-        Delete
-      </button>
-    </li>
-  )
+
+  toggleEdit = () => {
+    this.setState(prevState => ({isEditing: !prevState.isEditing}))
+  }
+
+  handleEditChange = event => {
+    this.setState({editedTitle: event.target.value})
+  }
+
+  saveTitle = () => {
+    const {onUpdate, todoDetails} = this.props
+    const {editedTitle} = this.state
+    if (editedTitle.trim() !== '') {
+      onUpdate(todoDetails.id, editedTitle)
+    }
+    this.setState({isEditing: false})
+  }
+
+  render() {
+    const {todoDetails, onDelete} = this.props
+    const {isEditing, editedTitle} = this.state
+    const {id, title} = todoDetails
+
+    return (
+      <li className="todo-item">
+        {isEditing ? (
+          <input
+            type="text"
+            value={editedTitle}
+            onChange={this.handleEditChange}
+          />
+        ) : (
+          <p>{title}</p>
+        )}
+        <div className="buttons">
+          <button
+            type="button"
+            className="btn edit-btn"
+            onClick={isEditing ? this.saveTitle : this.toggleEdit}
+          >
+            {isEditing ? 'Save' : 'Edit'}
+          </button>
+          <button
+            type="button"
+            className="btn delete-btn"
+            onClick={() => onDelete(id)}
+          >
+            Delete
+          </button>
+        </div>
+      </li>
+    )
+  }
 }
 
 export default TodoItem
