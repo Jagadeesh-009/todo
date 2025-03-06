@@ -1,0 +1,14 @@
+/* Write your CSS here */
+.TodoItem-container {
+  display: flex;
+  justify-content: space-between;
+  /* gap: 10px; */
+}
+.btn {
+  margin-left: 20px;
+  margin-bottom: 10px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 2px solid #ff0b37;
+  color: #ff0b37;
+}
